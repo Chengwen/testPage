@@ -1,0 +1,46 @@
+<div layout="column" ng-cloak>
+    <md-content flex layout-padding>
+        <p class="md-subhead">Search Movie by Title</p>
+        <form name="projectForm">
+            <md-input-container class="md-block" flex-xs>
+                <label>Title</label>
+                <input ng-model="$ctrl.title" name="title" required>
+                <div ng-messages="projectForm.title.$error">
+                    <div ng-message="required">Please input a title</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-xs>
+                <label>Year</label>
+                <input ng-model="$ctrl.year" type="number">
+            </md-input-container>
+            <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <md-button class="md-raised md-primary"
+                           ng-click="$ctrl.search()"
+                           ng-disabled="!($ctrl.title)">Search
+                </md-button>
+            </div>
+        </form>
+
+        <md-card ng-show=$ctrl.moviedata>
+            <div ng-show=$ctrl.moviedata.Response==="False">{{$ctrl.moviedata.Error}}</div>
+            <div ng-show=$ctrl.moviedata.Response==="True">
+                <img ng-src="{{$ctrl.moviedata.Poster}}" class="md-card-image">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{$ctrl.moviedata.Title}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        Released on: {{$ctrl.moviedata.Released}}
+                    </p>
+                    <p>
+                        {{$ctrl.moviedata.Plot}}
+                    </p>
+                </md-card-content>
+            </div>
+        </md-card>
+    </md-content>
+
+
+</div>

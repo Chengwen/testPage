@@ -1,0 +1,50 @@
+<md-content layout-padding>
+    <form name="myForm">
+    <div layout-gt-xs="row">
+        <div flex-gt-xs>
+            <h4>Date</h4>
+                <md-datepicker ng-model="$ctrl.date" md-placeholder="Enter date"
+                               required></md-datepicker>
+            </ng-form>
+        </div>
+    </div>
+
+    <div layout-xs="row">
+        <md-input-container class="md-block" flex="20" flex-xs>
+            <label>Hour</label>
+            <input ng-model="$ctrl.hour" required type="number" min="0" max="23" name="hour">
+            <div ng-messages="myForm.hour.$error">
+                <div ng-message-exp="['required', 'min', 'max']">Please input a valid hour</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex="20" flex-xs>
+            <label>Min</label>
+            <input ng-model="$ctrl.min" required type="number" min="0" max="59" name="min">
+            <div ng-messages="myForm.min.$error">
+                <div ng-message-exp="['required', 'min', 'max']">Please input a valid minute</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex="20" flex-xs>
+            <label>Sec</label>
+            <input ng-model="$ctrl.sec" required type="number" min="0" max="59" name="sec">
+            <div ng-messages="myForm.sec.$error">
+                <div ng-message-exp="['required', 'min', 'max']">Please input a valid second</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout-gt-xs="row">
+        <md-input-container flex="40">
+            <label>Time Zone</label>
+            <md-select ng-model="$ctrl.timezone" required>
+                <md-option ng-repeat="timezone in $ctrl.timezonelist" ng-value="timezone">
+                    {{timezone.code}} / {{timezone.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button class="md-raised md-primary"
+                   ng-click="$ctrl.convert()">Date to Timestamp</md-button>
+    </div>
+</form>
+</md-content>

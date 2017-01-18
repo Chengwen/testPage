@@ -1,0 +1,55 @@
+<md-dialog aria-label="Time Converter">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Time Converter</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="hide()">
+          <md-icon md-svg-src="/assets/svg/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+          <div>
+            <span class="md-subhead">Epoch timestamp:</span>
+            <span class="md-body-1">
+                {{ctrl.timestamp}}
+            </span>
+        </div>
+        <div>
+            <span class="md-subhead">Timestamp in milliseconds:</span>
+            <span class="md-body-1">
+                {{ctrl.milliseconds}}
+            </span>
+        </div>
+          <div>
+              <span class="md-subhead">Human time (selected time zone, {{ctrl.timezone.code}}):</span>
+              <span class="md-body-1">
+                {{ctrl.selectedDate}}
+            </span>
+          </div>
+          <div>
+              <span class="md-subhead">Human time (local time zone):</span>
+              <span class="md-body-1">
+                {{ctrl.localDate}}
+            </span>
+          </div>
+        <div>
+            <span class="md-subhead">Human time (GMT):</span>
+            <span class="md-body-1">
+                {{ctrl.utcDate}}
+            </span>
+        </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="hide()">
+        Close
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
